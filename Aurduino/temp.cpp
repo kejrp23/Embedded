@@ -1,7 +1,7 @@
-
 #include <LiquidCrystal_I2C.h>
 
 const int temp_pin {A0};
+const int led_pin {8};
 int temp = 0;
 int fahrenheit = 0;
 int celsius = 0;
@@ -12,6 +12,7 @@ void setup() {
   lcd.init();
   lcd.backlight();
   pinMode(temp_pin, INPUT);
+  pinMode(led_pin, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -25,8 +26,14 @@ void loop() {
   lcd.setCursor(7,1);
   lcd.print(fahrenheit);
   lcd.print("F");
+  if (fahrenheit > 90) {
+    digitalWrite(led_pin,HIGH);
+  }
+  else {
+    digitalWrite(led_pin,LOW);
+  }
   delay(10000);
  
 }
 
- //fahrenheit = ((celsius * 9) / 5 + 32)
+//fahrenheit = ((celsius * 9) / 5 + 32)
