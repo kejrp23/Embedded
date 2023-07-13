@@ -1,5 +1,5 @@
 // C++ code
-//
+// Turn on/off 3 pins
 const int buttonpin {2};
 int ledpin[3] = {12,13,11};
 int ledstate = 0;
