@@ -5,7 +5,7 @@
 ArduinoLEDMatrix matrix;
 
 int count {0};
-int buttonpin {8};
+const int buttonpin {8};
 int ledpin {};
 
 
@@ -21,69 +21,6 @@ const uint32_t heart[] = {
     0x100a0040
 };
 
-const uint32_t animation[][4] = {
-	{
-		0x11011,
-		0x1f01101,
-		0x10000000,
-		66
-	},
-	{
-		0x4000,
-		0x400400,
-		0x40000000,
-		66
-	}
-};
-
-uint8_t frame[8][12] = {
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-};
-
-void leftEye(){
-  //Left eye
-  frame[1][3] = 1;
-  frame[1][4] = 1;
-  frame[2][3] = 1;
-  frame[2][4] = 1;
-}
-
-void wink(){
-  //Wink with the left eye
-  frame[1][3] = 0;
-  frame[1][4] = 0;
-  frame[2][3] = 1;
-  frame[2][4] = 1;
-}
-
-void rightEye(){
-  //Right eye
-  frame[1][8] = 1;
-  frame[1][9] = 1;
-  frame[2][8] = 1;
-  frame[2][9] = 1;
-}
-
-void mouth(){
-  //Mouth
-  frame[5][3] = 1;
-  frame[5][9] = 1;
-  frame[6][3] = 1;
-  frame[6][4] = 1;
-  frame[6][5] = 1;
-  frame[6][6] = 1;
-  frame[6][7] = 1;
-  frame[6][8] = 1;
-  frame[6][9] = 1;
-}
-
   
 void setup() {
   Serial.begin(115200);
@@ -98,23 +35,9 @@ void setup() {
 
 void loop(){
   matrix.loadFrame(happy);
-  delay(5000);
+  delay(3000);
   matrix.loadFrame(heart);
-  delay(5000);
-  matrix.play();
-  delay(1000);
-  matrix.next();
-  leftEye();
-  rightEye();
-  mouth();
-
-  matrix.renderBitmap(frame, 8, 12);
-
-  delay(1000);
-  wink();
-
-  matrix.renderBitmap(frame, 8, 12);
-  delay(1000);
+  delay(3000);
   ++count;
   Serial.println(count);
 
