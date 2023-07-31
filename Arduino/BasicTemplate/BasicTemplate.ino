@@ -29,7 +29,7 @@ void setup() {
   RTCTime startTime(10, Month::JULY, 2023, 15, 32, 00, DayOfWeek::MONDAY, SaveLight::SAVING_TIME_ACTIVE);
   RTC.setTime(startTime);
   pinMode(buttonpin, INPUT_PULLUP);
-
+  matrix.
   
 }
 
