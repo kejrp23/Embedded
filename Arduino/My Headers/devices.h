@@ -1,5 +1,4 @@
 
-
 struct device {
     const int pin;
     int datapin;
@@ -13,16 +12,21 @@ struct device {
 
 
 
-	void on(){
-			if (last_status == 0){ digitalWrite(pin,HIGH)}
+    void on(){
+        if (last_status == 0){ 
+          digitalWrite(pin,HIGH);
+          last_status = 1;
+          };
+    };
 
-			else if (last_status == 1){}};
 
-	void off(){
-			if (last_status == 1){ digitalWrite(pin,LOW)}
-
-			else if (last_status == 1){}};
-
+    void off(){
+        if (last_status == 1){
+          digitalWrite(pin,LOW);
+          last_status = 0;
+          };
+    };
 
 
 };
+
