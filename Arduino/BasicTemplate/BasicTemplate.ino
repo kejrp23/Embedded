@@ -8,8 +8,6 @@ int count {0};
 const int buttonpin {8};
 int ledpin {};
 
-
-
 const uint32_t happy[] = {
     0x19819,
     0x80000001,
@@ -26,10 +24,10 @@ void setup() {
   Serial.begin(115200);
   matrix.begin();
   RTC.begin();
-  RTCTime startTime(10, Month::JULY, 2023, 15, 32, 00, DayOfWeek::MONDAY, SaveLight::SAVING_TIME_ACTIVE);
+  RTCTime startTime(10, Month::AUGUST, 2023, 17, 54, 00, DayOfWeek::MONDAY, SaveLight::SAVING_TIME_ACTIVE);
   RTC.setTime(startTime);
   pinMode(buttonpin, INPUT_PULLUP);
-  matrix.
+  pinMode(LED_BUILTIN, OUTPUT);
   
 }
 
@@ -60,8 +58,12 @@ void loop(){
   Serial.print(currentTime.getMinutes());
   Serial.print(":");
   Serial.println(currentTime.getSeconds());
-
+  digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+
+  
+
 
 
   
