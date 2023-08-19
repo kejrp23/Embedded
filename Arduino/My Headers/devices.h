@@ -31,6 +31,5 @@ struct device {
 	int read(){
 			response = digitalRead(datapin);
 			return response;
-
+	};
 };
-
