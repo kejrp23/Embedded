@@ -13,9 +13,16 @@ void error(T msg, T x){
 };
 
 template<typename T>
-void print(T x){
+void println(T x){
 		Serial.println(x);
 };
+
+template<typename T>
+void print(T x){
+		Serial.print(x);
+};
+
+
 
 
 
