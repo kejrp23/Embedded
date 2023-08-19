@@ -2,6 +2,7 @@
 struct device {
     const int pin;
     int datapin;
+	int response;
     int last_status = 0;
 
     device(int pin_number)
@@ -27,6 +28,9 @@ struct device {
           };
     };
 
+	int read(){
+			response = digitalRead(datapin);
+			return response;
 
 };
 
