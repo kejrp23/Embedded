@@ -32,4 +32,11 @@ struct device {
 			response = digitalRead(datapin);
 			return response;
 	};
+
+	void toggle(int time){
+			on();
+			delay(time);
+			off();
+			delay(time);
+	};
 };
