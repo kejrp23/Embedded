@@ -1,6 +1,8 @@
 #include "Arduino_LED_Matrix.h"
-#include "RTC.h"
+#include "devices.h"
+//#include "RTC.h"
 
+device led(3);
 
 ArduinoLEDMatrix matrix;
 
@@ -23,11 +25,10 @@ const uint32_t heart[] = {
 void setup() {
   Serial.begin(115200);
   matrix.begin();
-  RTC.begin();
-  RTCTime startTime(10, Month::AUGUST, 2023, 17, 54, 00, DayOfWeek::MONDAY, SaveLight::SAVING_TIME_ACTIVE);
-  RTC.setTime(startTime);
-  pinMode(buttonpin, INPUT_PULLUP);
-  pinMode(LED_BUILTIN, OUTPUT);
+  // RTC.begin();
+  // RTCTime startTime(10, Month::AUGUST, 2023, 17, 54, 00, DayOfWeek::MONDAY, SaveLight::SAVING_TIME_ACTIVE);
+  // RTC.setTime(startTime);
+  pinMode(led.pin, OUTPUT);
   
 }
 
@@ -36,31 +37,36 @@ void loop(){
   delay(3000);
   matrix.loadFrame(heart);
   delay(3000);
-  ++count;
-  Serial.println(count);
-
-  RTCTime currentTime;
-
-  // Get current time from RTC
-  RTC.getTime(currentTime);
-
-  // Print out date (DD/MM//YYYY)
-  Serial.print(Month2int(currentTime.getMonth()));
-  Serial.print("/");
-  Serial.print(currentTime.getDayOfMonth());
-  Serial.print("/");
-  Serial.print(currentTime.getYear());
-  Serial.print(" - ");
-
-  // Print time (HH/MM/SS)
-  Serial.print(currentTime.getHour());
-  Serial.print(":");
-  Serial.print(currentTime.getMinutes());
-  Serial.print(":");
-  Serial.println(currentTime.getSeconds());
-  digitalWrite(LED_BUILTIN, HIGH);
+  led.on();
   delay(1000);
-  digitalWrite(LED_BUILTIN, LOW);
+  led.off();
+  delay(1000);
+
+
+
+
+  // RTCTime currentTime;
+
+  // // Get current time from RTC
+  // RTC.getTime(currentTime);
+
+  // // Print out date (DD/MM//YYYY)
+  // Serial.print(Month2int(currentTime.getMonth()));
+  // Serial.print("/");
+  // Serial.print(currentTime.getDayOfMonth());
+  // Serial.print("/");
+  // Serial.print(currentTime.getYear());
+  // Serial.print(" - ");
+
+  // // Print time (HH/MM/SS)
+  // Serial.print(currentTime.getHour());
+  // Serial.print(":");
+  // Serial.print(currentTime.getMinutes());
+  // Serial.print(":");
+  // Serial.println(currentTime.getSeconds());
+  // digitalWrite(LED_BUILTIN, HIGH);
+  // delay(1000);
+  // digitalWrite(LED_BUILTIN, LOW);
 
   
 
