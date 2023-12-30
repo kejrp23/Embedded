@@ -21,6 +21,7 @@ void println(T x){
 		Serial.println(x);
 };
 
-
-
-
+template<typename T>
+void bitsizeof(T x){
+		std::cout << sizeof(x) * 8 << '\n';
+};
