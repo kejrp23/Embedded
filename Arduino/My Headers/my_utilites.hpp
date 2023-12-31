@@ -23,5 +23,5 @@ void println(T x){
 
 template<typename T>
 void bitsizeof(T x){
-		std::cout << sizeof(x) * 8 << '\n';
+		std::cout << sizeof(x) * 8 << " bits" << '\n';
 };
