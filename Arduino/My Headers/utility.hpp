@@ -1,8 +1,6 @@
 //This file is to contain useful function's and templates to make every day embedded programming easier. 
 
-namespace utilities {
-
-
+namespace utility {
 		template<typename T>
 		void error(T errornumber){
 				Serial.print("An Error has occurred in: ");
@@ -24,9 +22,9 @@ namespace utilities {
 				Serial.println(x);
 		};
 
+
 		template<typename T>
 		void bitsizeof(T x){
 				std::cout << sizeof(x) * 8 << " bits" << '\n';
 		};
 };
-
